@@ -6,10 +6,9 @@ import { useState } from "react";
 import { CONTRACT_ADDRESS, HAS_CONTRACT, LINKS, buyUrl, chartUrl } from "@/lib/config";
 import { shortenAddress } from "@/lib/format";
 
-const SOCIAL_CARDS = [
+const SOCIAL_LINKS = [
   {
     label: "Twitter / X",
-    handle: "@nadking_token",
     href: LINKS.twitter,
     icon: (
       <svg
@@ -25,7 +24,6 @@ const SOCIAL_CARDS = [
   },
   {
     label: "Telegram",
-    handle: "t.me/nadking_official",
     href: LINKS.telegram,
     icon: (
       <svg
@@ -41,7 +39,6 @@ const SOCIAL_CARDS = [
   },
   {
     label: "Nad.fun",
-    handle: HAS_CONTRACT ? "Token Page" : "Coming soon",
     href: buyUrl(),
     icon: (
       <svg
@@ -62,7 +59,6 @@ const SOCIAL_CARDS = [
   },
   {
     label: "DexScreener",
-    handle: HAS_CONTRACT ? "View Chart" : "Coming soon",
     href: chartUrl(),
     icon: (
       <svg
@@ -152,31 +148,26 @@ export function Footer() {
           </motion.h2>
         </div>
 
-        {/* Social cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-10 sm:mb-12">
-          {SOCIAL_CARDS.map((card, i) => (
+        {/* Social icons */}
+        <div className="flex items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-12">
+          {SOCIAL_LINKS.map((link, i) => (
             <motion.a
-              key={card.label}
-              href={card.href}
+              key={link.label}
+              href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
+              aria-label={link.label}
+              title={link.label}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="glass rounded-2xl p-5 flex items-center gap-4 hover:border-[rgba(255,215,0,0.45)] hover:-translate-y-1 transition-all duration-300 group"
+              transition={{ duration: 0.45, delay: i * 0.07 }}
+              whileHover={{ scale: 1.08, y: -2 }}
+              whileTap={{ scale: 0.96 }}
+              className="relative inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full glass text-[var(--color-gold-500)] hover:border-[rgba(255,215,0,0.55)] hover:text-[var(--color-gold-400)] hover:glow-gold transition-[border-color,color,box-shadow]"
             >
-              <div className="w-11 h-11 rounded-full glass-strong flex items-center justify-center text-[var(--color-gold-500)] group-hover:glow-gold transition-shadow">
-                {card.icon}
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="text-xs uppercase tracking-wider text-[var(--color-ink-mute)]">
-                  {card.label}
-                </div>
-                <div className="text-sm sm:text-base font-medium text-[var(--color-ink)] truncate">
-                  {card.handle}
-                </div>
-              </div>
+              <span className="sr-only">{link.label}</span>
+              {link.icon}
             </motion.a>
           ))}
         </div>
