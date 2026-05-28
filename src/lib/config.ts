@@ -21,7 +21,7 @@ const env = (key: string, fallback = ""): string => {
 
 export const LINKS = {
   nadfun: env("NEXT_PUBLIC_NADFUN_URL", "https://nad.fun"),
-  twitter: env("NEXT_PUBLIC_TWITTER_URL", "https://x.com/nadking_token"),
+  twitter: env("NEXT_PUBLIC_TWITTER_URL", "https://x.com/nads_king"),
   telegram: env("NEXT_PUBLIC_TELEGRAM_URL", "https://t.me/nadking_official"),
   dexscreener: env(
     "NEXT_PUBLIC_DEXSCREENER_URL",
