@@ -195,7 +195,7 @@ export function Footer() {
                   </>
                 ) : (
                   <span className="text-[var(--color-ink-soft)] italic">
-                    Coming soon — launching on Nad.fun
+                    0x4DbE98c7F736140909B0f542B055614112fa7777
                   </span>
                 )}
               </div>
